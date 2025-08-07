@@ -26,14 +26,18 @@ def agregar_libro():
 
 def mostrar_libros():
     print("---LIBROS INGRESADOS---")
-    for i in libros:
-        print(f"---Información libro {i+1}--")
-        Libro.mostrar_informacion()
+    if not libros:
+        print("Lista de libros vacia...")
+    else:
+        for libro in libros:
+            libro.mostrar_informacion()
+            print("---"*4)
 
 def eliminar_libro():
-    libro_eliminar= input("Ingrese nombre de libro a eliminar:")
-    if libro_eliminar in libros:
-        libros.remove(libro_eliminar)
+    libro_eliminar= input("Ingrese nombre de libro a eliminar:").lower()
+    for libro in libros:
+        if libro.titulo.lower() == libro_eliminar:
+            libros.remove(libro)
 
 def menu_principal():
     print(f"---MENÚ PRINCIPAL---\n1.agregar libro.\n2.Mostrar la lista de libros.")
