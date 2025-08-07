@@ -14,12 +14,15 @@ class Libro:
         print(f"Titulo:{self.titulo}\nAutor:{self.autor}\nAño:{self.year}")
 
 def agregar_libro():
-    libro_agregar= input("Ingrese titulo de libro:")
-    print("Libro ya registrado...")
-    autor= input("Ingrese autor de libro:")
-    year= int(input("Ingrese año de publicación:"))
-    libro= Libro(libro_agregar,autor,year)
-    libros.append(libro)
+    try:
+        libro_agregar= input("Ingrese titulo de libro:").lower()
+        autor= input("Ingrese autor de libro:").lower()
+        year= int(input("Ingrese año de publicación:"))
+    except ValueError:
+        print("Error: ingreso de datos incorrectos, deben ser numericos.")
+    else:
+        libro= Libro(libro_agregar,autor,year)
+        libros.append(libro)
 
 def mostrar_libros():
     print("---LIBROS INGRESADOS---")
